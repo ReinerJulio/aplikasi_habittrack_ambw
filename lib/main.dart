@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'screens/auth_gate.dart';
 import 'screens/add_habit_screen.dart';
+import 'screens/statistics_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const AuthGate(),
         '/add': (context) => const AddHabitScreen(),
+        '/statistics': (context) => const StatisticsScreen(),
       },
     );
   }

@@ -113,6 +113,14 @@ class _HomeScreenState extends State<HomeScreen> {
               await FirebaseAuth.instance.signOut();
             },
           ),
+          IconButton(
+            icon: const Icon(Icons.bar_chart),
+            color: Colors.white,
+            tooltip: 'Statistik',
+            onPressed: () {
+              Navigator.pushNamed(context, '/statistics');
+            },
+          ),
         ],
       ),
       body: habits.isEmpty
@@ -126,23 +134,23 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: habits.length,
               itemBuilder: (context, index) {
                 final habit = habits[index];
-                final completedDates =
-                    habit['completedDates'] as List<String>;
+                final completedDates = habit['completedDates'] as List<String>;
                 final today = DateTime.now();
                 final todayStr = "${today.year}-${today.month}-${today.day}";
                 final isCompleted = completedDates.contains(todayStr);
 
                 return Card(
                   color: Colors.grey[900],
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
                   child: ListTile(
                     title: Text(
                       habit['habit'],
                       style: GoogleFonts.poppins(
                         fontSize: 16,
-                        color:
-                            isCompleted ? Colors.greenAccent : Colors.white,
+                        color: isCompleted ? Colors.greenAccent : Colors.white,
                         decoration: isCompleted
                             ? TextDecoration.lineThrough
                             : null,
